@@ -1,0 +1,11 @@
+<h1>Miniatures</h1>
+	
+<% @miniatures.each do |m| %>
+	Name <%= m.name %><br>
+	Type <%= m.war_type %><br>
+	Armies <%= m.armies.empty? ? "< none >" : m.armies.map(&:name).join(", ") %><br>
+	<%= image_tag m.picture.url(:medium) %>
+	<br>
+<% end %>
+
+<%= link_to "Add new miniature", :action => 'new' %>

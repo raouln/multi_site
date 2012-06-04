@@ -1,0 +1,7 @@
+<h1>Armies</h1>
+<% @armies.each do |army| %>
+	Name <%= army.name %><br>
+	Owner <%= army.owner %><br>
+<% end %>
+
+<%= link_to "Add army", :action => 'new' %>

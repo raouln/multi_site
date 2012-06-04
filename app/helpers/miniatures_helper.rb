@@ -1,0 +1,2 @@
+module MiniaturesHelper
+end
