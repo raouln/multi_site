@@ -1,11 +1,18 @@
-<h1>New miniature</h1>
+<h1>New unit</h1>
 
-<%= form_for @miniature, :html => { :multipart => true } do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br />
-
-  <%= f.label :type %>
-  <%= f.text_field :war_type %><br />
+<%= form_for @unit, :html => { :multipart => true } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br />
+    
+    <%= f.label :race_id %>
+    <%= f.select :race_id, Race.selectable_options,
+                 :include_blank => "-- Unit Type --" %>
+  
+    <%= f.label :unit_type_id %>
+    <%= f.select  :unit_type_id, UnitType.selectable_options, 
+                :include_blank => "-- Unit Type --" %>
+  
+    <br />
   <%= f.label :picture %>
   <%= f.file_field :picture %><br>
   <%= f.submit %>

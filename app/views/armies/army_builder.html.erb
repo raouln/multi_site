@@ -1,0 +1,60 @@
+<style>
+    h1 { padding: .1em; margin: 0; }
+    #products { float:left; width: 250px; margin-right: 2em; }
+    #cart { width: 200px; float: left; margin-top: 1em; }
+    /* style the list to maximize the droppable hitarea */
+    #cart ul { margin: 0; padding: 2em 0 1em 3em; }
+</style>
+
+<%= link_to "My superb link simple", "#", :data => { :colorbox => true } %>
+<%= link_to "My superb link", "#", :data => { :colorbox => true, :colorbox_height => '300px', :colorbox_width => '300px', :colorbox_iframe => true } %>
+<div> 
+    <div id="products">
+        <h2 align="center" class="ui-widget-header">Units</h2>
+        <div id="catalog">
+            <h3><a href="#">Unique Characters</a></h3>
+            <div>
+                <ul>
+                    <li class="unit">Rafgald</li>
+                    <li>Archibald</li>
+                </ul>
+            </div>
+            <h3><a href="#">Troops</a></h3>
+            <div>
+                <ul>
+                    <% @miniatures.each do |m| %>
+                        <li class="unit" value=<%= m.id %>>
+                            <%= m.name %>
+                            <span style="color: grey; font-size: 10px;">
+                                <i><%= m.points %> pts</i>
+                            </span>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            <h3><a href="#">War machines</a></h3>
+            <div>
+                <ul>
+                    <li>Catapult</li>
+                    <li>Anvil of doom</li>
+                    <li>Cannon</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="cart">
+        <h2 align="center" class="ui-widget-header">Army</h2>
+        <div align="center" id="progressbar">
+            <span id="points_left" align="center"><%= @army.points %> pts left</span>
+        </div>
+        <%= combo_progress_bar([19, 9, 20, 10]) %>
+        <div class="progressBar pb5"></div>
+        <div class="ui-widget-content">
+            <ul>
+                <li class="placeholder">Add your warriors here</li>
+            </ul>
+        </div>
+    </div
+    
+<br/>
+</div>

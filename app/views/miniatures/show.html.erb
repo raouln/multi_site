@@ -1,11 +1,22 @@
-<h1>Miniatures</h1>
-	
-<% @miniatures.each do |m| %>
-	Name <%= m.name %><br>
-	Type <%= m.war_type %><br>
-	Armies <%= m.armies.empty? ? "< none >" : m.armies.map(&:name).join(", ") %><br>
-	<%= image_tag m.picture.url(:medium) %>
-	<br>
-<% end %>
+<h1>Units</h1>
 
-<%= link_to "Add new miniature", :action => 'new' %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Race</th>
+    <th>Unit type</th>
+    <th>Armies</th>
+    <th>Image</th>
+  </tr>
+  <% @units.each do |m| %>
+    <tr>
+      <td><%= m.name      %></td>
+      <td><%= m.race_name %></td>
+      <td><%= m.unit_type.name rescue "<none>" %></td>
+      <td><%= m.army_names %></td>
+      <td><%= image_tag m.picture.url(:medium), :size => "40x40" %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+<%= link_to "Add new unit", :action => 'new' %>

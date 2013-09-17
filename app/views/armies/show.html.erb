@@ -1,7 +1,19 @@
+<ul class="unit_list">
+    <li class="unit">test</li>
+</ul>
 <h1>Armies</h1>
 <% @armies.each do |army| %>
-	Name <%= army.name %><br>
-	Owner <%= army.owner %><br>
+	<h3><%= army.name %></h3>
+    <div style="color: grey;">
+        <i> <%= army.race.nil? ? "none" : army.race.name %> 
+            <%=  army.points %> pts</i></div>
+	By <%= army.owner.email %><br>
+    <%= link_to "edit", 
+                :action => :edit, 
+                :id     => army.id if current_user == army.owner %>
 <% end %>
-
+<br />
+<br />
 <%= link_to "Add army", :action => 'new' %>
+
+

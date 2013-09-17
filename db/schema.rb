@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527212923) do
+ActiveRecord::Schema.define(:version => 20130917184107) do
 
   create_table "armies", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120527212923) do
     t.integer  "points"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "race_id"
   end
 
   create_table "armies_miniatures", :id => false, :force => true do |t|
@@ -28,9 +29,21 @@ ActiveRecord::Schema.define(:version => 20120527212923) do
 
   add_index "armies_miniatures", ["army_id", "miniature_id"], :name => "index_armies_miniatures_on_army_id_and_miniature_id"
 
-  create_table "miniatures", :force => true do |t|
+  create_table "races", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "unit_types", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "units", :force => true do |t|
     t.string   "name"
-    t.string   "war_type"
+    t.string   "unit_type"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -39,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120527212923) do
     t.datetime "updated_at",           :null => false
     t.integer  "army_id"
     t.integer  "points"
+    t.integer  "race_id"
   end
 
   create_table "users", :force => true do |t|
