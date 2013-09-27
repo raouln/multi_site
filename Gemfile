@@ -34,6 +34,10 @@ group :development do
   gem 'sqlite3'
 end
 
+group :production do
+  gem 'activerecord-postgresql-adapter'
+end
+
 #gem 'mysql2'
 gem 'jquery-rails'
 
