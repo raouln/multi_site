@@ -10,7 +10,7 @@ gem 'magnific-popup-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'css3-progress-bar-rails'
-gem 'sqlite3'
+# gem 'sqlite3'
 gem "paperclip", "~> 3.0"
 gem "twitter-bootstrap-rails"
 gem 'jquery-ui-rails'
