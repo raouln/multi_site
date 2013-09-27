@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Warhammer" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Stuff" %></title>
     <%= csrf_meta_tags %>
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -21,7 +21,7 @@
     <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
 
   </head>
-  <body style="background-image:url('Warhammer_World_Map.JPG')">
+  <body>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">
-            <%= image_tag "warhammer_logo3.gif", :height => "25"%>
+            <%= image_tag "warhammer_logo3.gif", :height => "25" unless current_user.blank? %>
           </a>
           
             <div class="container-fluid nav-collapse">
