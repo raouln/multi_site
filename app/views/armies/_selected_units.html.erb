@@ -1,0 +1,24 @@
+<div align="center" id="progressbar">
+	<span id="points_left" align="center" value="<%= @points %>">
+    <%= @points %>
+	</span> pts left
+</div>
+
+	<div class="ui-widget-content">
+  	<ul>
+			<% if @army.units.blank? %>
+  			<li class="unit placeholder">
+					Add your units here
+    		</li>
+  		<% else %>
+				<% @army.units.each do |unit| %>
+					<li class="unit ui-draggable dropped" value="<%= unit.id %>">
+						<%= unit.name %>
+						<span class="grey_points">
+                <%= unit.points %> pts
+            </span>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>

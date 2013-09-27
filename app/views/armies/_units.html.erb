@@ -1,0 +1,18 @@
+<h2 align="center" class="ui-widget-header">Units</h2>
+<div id="catalog">
+  <% UnitType.all.each do |unit_type| %>
+    <h3><a href="#"><%= unit_type.name %> (<%= unit_type.units.count %>)</a></h3>
+    <div>
+        <ul>
+            <% unit_type.units.each do |m| %>
+                <li class="unit <%= "not_draggable" if @points < m.points %>" value=<%= m.id %>>
+                    <%= truncate(m.name, :length => 18) %>
+                    <span class="grey_points">
+                    	<i><%= m.points %> pts</i>
+                    </span>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+  <% end %>
+</div>

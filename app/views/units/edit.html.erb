@@ -1,0 +1,27 @@
+<h3>Edit <%= @unit.name %></h3>
+
+<%= form_for @unit, :html => { :multipart => true } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br />
+    
+    <%= f.label :race_id %>
+    <%= f.select :race_id, Race.selectable_options,
+                 :include_blank => "-- Unit Type --" %>
+  
+    <%= f.label 	:unit_type_id %>
+    <%= f.select 	:unit_type_id, UnitType.selectable_options, 
+                	:include_blank => "-- Unit Type --" %>
+  
+    <br />
+    <%= f.label :points %>
+    <%= f.text_field :points %>
+
+		<%= render :partial => "unit_stats", :locals => {:unit => @unit, :edit => true } %>
+
+    <%= f.label :picture %>
+    <%= f.file_field :picture %><br>
+  
+    <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', :action => :show %>

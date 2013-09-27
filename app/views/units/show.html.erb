@@ -1,0 +1,61 @@
+<h1>Units</h1>
+<%= link_to "New unit", :action => :new %>
+
+<a href="#test-popup" class="open-popup-link">Show inline popup</a>
+
+<!-- Popup itself -->
+<div id="test-popup" class="white-popup mfp-hide">
+  Popup content
+</div>
+
+<% @units.each do |unit| %>
+<table class="unit_portrait">
+	<tr>
+		<th align="left" style="padding-left: 8px;" colspan="2">
+			<%= unit.name %>			
+		</th>
+		<th>
+			<span class="grey_points"><%= unit.points %> pts</span>
+		</th>
+		<th><%= unit.unit_type.name rescue "<none>" %></th>
+		<th>
+			<%= image_tag "#{unit.race.name.parameterize.downcase.underscore}.jpg", 
+											:height => "30", 
+											:title 	=> unit.race.name, 
+											:class 	=> "race_symbol",
+											:align	=> "right" %>			
+		</th>
+	</tr>
+	<tr>
+		<td style="padding-left: 8px;">
+			<% unless unit.picture_file_name.blank? %>
+				<%= image_tag unit.picture.url(:medium), :height => "80", :class => "unit_picture" %>
+			<% else %>
+				<%= image_tag "missing_picture.jpg", :height => "80", :class => "unit_picture", :style => "opacity: 0.3" %>
+			<% end %>
+		</td>
+		<td></td>
+		<td colspan="3">
+			<%= render :partial => 'unit_stats', :locals => {:unit => unit} %>
+		</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<%= link_to "Delete",
+        						{:id 			=> unit.id}, 
+			               :confirm => "Are you sure?", 
+							       :method  => :delete,
+							 			 :style 	=> "float:right; margin-right: 5px;"%>
+			<%= link_to "Edit",
+                   	{:action 	=> :edit,
+										 :id 			=> unit.id},
+										 :style 	=> "float:right; margin-right: 5px;" %>
+		</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<% end %>

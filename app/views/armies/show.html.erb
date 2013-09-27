@@ -9,8 +9,8 @@
             <%=  army.points %> pts</i></div>
 	By <%= army.owner.email %><br>
     <%= link_to "edit", 
-                :action => :edit, 
-                :id     => army.id if current_user == army.owner %>
+                :action 	=> :edit, 
+                :army_id	=> army.id if current_user == army.owner %>
 <% end %>
 <br />
 <br />

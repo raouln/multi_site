@@ -1,3 +1,59 @@
 // Place all the styles related to the miniature controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.image-link {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+
+/* aligns caption to center */
+.mfp-title {
+  text-align: center;
+  padding: 6px 0;
+}
+
+table.unit_stats {
+	background-color: #F5F5F5;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+table.unit_portrait {
+	margin-top: 12px;
+	width: 350px;
+	//background-color: #F5F5F5;
+	//border: 1px solid rgba(0, 0, 0, 0.05);
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+table.unit_stats input {
+	color: black;
+	width: 16px;
+	maxlength: 2;
+}
+
+table.unit_stats th {
+	horizontal-align: left;
+}
+
+.unit_picture {
+	border: 2px solid white;//rgba(0, 0, 0, 0.05);
+	border-radius: 7px 7px 7px 7px;
+}
+
+.chaos {
+	background-color: bLack;
+}
+
+.chaos th {
+	color: white;
+}
+
+.race_symbol {
+	# border: 1px solid black;
+	border-radius: 15px 15px 15px 15px;
+}

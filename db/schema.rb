@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917184107) do
+ActiveRecord::Schema.define(:version => 20130926124512) do
 
   create_table "armies", :force => true do |t|
     t.string   "name"
@@ -22,17 +22,32 @@ ActiveRecord::Schema.define(:version => 20130917184107) do
     t.integer  "race_id"
   end
 
-  create_table "armies_miniatures", :id => false, :force => true do |t|
+  create_table "armies_units", :id => false, :force => true do |t|
     t.integer "army_id"
-    t.integer "miniature_id"
+    t.integer "unit_id"
   end
 
-  add_index "armies_miniatures", ["army_id", "miniature_id"], :name => "index_armies_miniatures_on_army_id_and_miniature_id"
+  add_index "armies_units", ["army_id", "unit_id"], :name => "index_armies_miniatures_on_army_id_and_miniature_id"
 
   create_table "races", :force => true do |t|
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "unit_stats", :force => true do |t|
+    t.integer  "unit_id"
+    t.integer  "move"
+    t.integer  "weapon_skill"
+    t.integer  "ballistic_skill"
+    t.integer  "strength"
+    t.integer  "toughness"
+    t.integer  "initiative"
+    t.integer  "wounds"
+    t.integer  "attack"
+    t.integer  "leadership"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "unit_types", :force => true do |t|
@@ -43,14 +58,13 @@ ActiveRecord::Schema.define(:version => 20130917184107) do
 
   create_table "units", :force => true do |t|
     t.string   "name"
-    t.string   "unit_type"
+    t.integer  "unit_type_id",         :limit => 255
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "army_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "points"
     t.integer  "race_id"
   end

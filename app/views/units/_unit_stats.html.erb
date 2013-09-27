@@ -1,0 +1,24 @@
+<% unit ||= nil %>
+<% edit ||= false %>
+<table class="unit_stats">
+	<tr>
+		<% UnitStat.fields.each do |short, long| %>
+			<th><%= short %></th>
+		<% end %>
+	</tr>
+	<tr>
+		<% UnitStat.fields.each do |short, long| %>
+			<td width="25px" align="center">
+				<% if unit.blank? || edit %>
+					<input type="number" 
+								 maxlength="2" 
+								name="stats[<%= long %>]"
+								value="<%= unit.stats.send(long) unless unit.blank? || unit.stats.blank? %>" 			
+					</input>
+				<% else %>
+					<%= unit.stats.send(long) rescue "n/a" %>
+				<% end%>
+			</td>
+		<% end %>
+	</tr>
+</table>

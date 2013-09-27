@@ -12,6 +12,5 @@
  *= require_tree .
  *= require jquery.ui.all
  *= require css3-progress-bar
- *= require colorbox-rails
- *= require armies
+ *= require magnific-popup
 */

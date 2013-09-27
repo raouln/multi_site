@@ -16,7 +16,33 @@ body { padding-top: 60px; }
 
 // Font Awesome
 @import "fontawesome";
- 
+
+
+
+/* optionally hide arrows until image is displayed */
+.mfp-s-loading .mfp-arrow { 
+   display: none;
+}
+
+
+.sidebar-nav-fixed {
+    position:fixed;
+    top:60px;
+    width:10.97%;
+}
+
+@media (max-width: 767px) {
+    .sidebar-nav-fixed {
+        position:static;
+        width:auto;
+    }
+}
+
+@media (max-width: 979px) {
+    .sidebar-nav-fixed {
+        top:70px;
+    }
+}
 
 // Your custom LESS stylesheets goes here
 //

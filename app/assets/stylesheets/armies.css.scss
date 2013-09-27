@@ -3,11 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 ul {
-margin: 0 0 0 32px;
-line-height: 1.5
+	margin: 0 0 0 32px;
+	line-height: 1.5
 }
 
 .unit {
     list-style-image: url('unit_bullet.png');
     vertical-align: middle;
+    //display: inline-block;
+}
+
+.not_draggable {
+		opacity: 0.4;
+}
+
+.grey_points {
+	color: 				grey; 
+	font-size: 		10px;
+	font-weight: 	italic;
+}
+
+h1 { 
+	padding: .1em; margin: 0; 
+}
+
+#units { 
+	float:left; width: 250px; margin-right: 2em; 
+}
+
+#cart { 
+	width: 250px; float: left; 
+}
+
+#cart ul { 
+	margin: 0; padding: 2em 0 1em 3em; 
 }

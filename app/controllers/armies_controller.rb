@@ -8,8 +8,8 @@ class ArmiesController < ApplicationController
     
   def new
     
-    @army       = Army.new
-    @miniatures = Unit.all
+    @army  = Army.new
+    @units = Unit.all
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @post }
@@ -18,14 +18,14 @@ class ArmiesController < ApplicationController
   end
   
   def create
-    #raise params.inspect
+    
     @army           = Army.new(params[:army])
     @army.user_id   = current_user.id
     
     respond_to do |format|
       if @army.save
-        @units   = Unit.all
-        
+        @units  = Unit.all
+        @points = @army.points
         format.html  { render :controller => :armies,
                               :action     => :army_builder,
                               :notice     => 'Army was successfully created. Choose your troops' }
@@ -40,26 +40,36 @@ class ArmiesController < ApplicationController
     end
   end
   
-  def army_builder
-    @units = Unit.all
-  end
-  
-  def selectable_units
-    flash[:notice] = params
-    render :update do |page|
-      page.render_html "miniatures", :partial => miniatures
+  def edit
+    
+    @army = Army.find(params[:army_id])
+    
+    respond_to do |format|
+        @units  = Unit.all
+        @points = @army.points - @army.units.sum(&:points)
+        format.html  { render :controller => :armies,
+                              :action     => :army_builder }
     end
   end
+    
+  def army_builder
+  end
+
   
   def update_army_list
-    raise params.inspect
-    respond_to do |format|
-      format.js 
+    
+    @army = Army.find(params[:army_id])
+    unit  = Unit.find(params[:id])
+    if params[:move].eql?("add")
+      @army.units << unit
+    elsif params[:move].eql?("remove")
+      @army.units.delete(unit)
     end
-  end
-  
-  def edit
-    @army = Army.find(params[:id])
+    @points = @army.points - @army.units.sum(&:points)
+    
+    respond_to do |format|
+      format.js
+    end
   end
   
 end

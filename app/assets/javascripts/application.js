@@ -21,4 +21,8 @@
 //= require jquery.ui.resizable
 //= require jquery.ui.selectable
 //= require jquery.ui.sortable
-//= require colorbox-rails
+//= require jquery.ui.widget
+//= require jquery.ui.mouse
+//= require jquery.ui.touch-punch
+//= require magnific-popup
+//= require units
