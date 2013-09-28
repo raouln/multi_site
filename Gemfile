@@ -32,6 +32,8 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'heroku'
+  gem 'taps'
 end
 
 group :production do

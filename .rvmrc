@@ -1,1 +1,1 @@
-rvm use --create 1.9.3@warhammer
+rvm use --create 1.9.2@warhammer
